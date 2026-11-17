@@ -1,0 +1,24 @@
+<section class="card">
+  <div class="icon" aria-hidden="true">👥</div>
+
+  <div>
+    <h2>Liste des amis</h2>
+
+    @for (friend of friends; track friend.id; let i = $index) {
+      <div>
+        <label [for]="'friend-' + friend.id">Prénom de l’ami {{ i + 1 }}</label>
+        <input
+          [id]="'friend-' + friend.id"
+          type="text"
+          [(ngModel)]="friend.name"
+        />
+      </div>
+    }
+
+    <ul>
+      @for (friend of friends; track friend.id) {
+        <li>{{ friend.name }}</li>
+      }
+    </ul>
+  </div>
+</section>

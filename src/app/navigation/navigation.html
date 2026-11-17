@@ -1,0 +1,5 @@
+<nav class="navbar" aria-label="Navigation principale">
+  @for (link of links; track link.fragment) {
+    <a routerLink="/" [fragment]="link.fragment">{{ link.label }}</a>
+  }
+</nav>

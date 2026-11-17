@@ -1,0 +1,24 @@
+<section class="card">
+  <span class="icon" aria-hidden="true">🔔</span>
+
+  <div>
+    <h2>Zone de notifications</h2>
+    <p>Vous avez {{ messages.length }} nouvelles notifications.</p>
+
+    <button
+      type="button"
+      (click)="toggleMessages()"
+      [attr.aria-expanded]="showMessages"
+    >
+      {{ showMessages ? 'Masquer les notifications' : 'Afficher les notifications' }}
+    </button>
+
+    @if (showMessages) {
+      <ul>
+        @for (message of messages; track message) {
+          <li class="notification">{{ message }}</li>
+        }
+      </ul>
+    }
+  </div>
+</section>
