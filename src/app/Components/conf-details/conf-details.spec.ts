@@ -1,18 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ConferenceList } from './conference-list';
+import { ConfDetails } from './conf-details';
 
-describe('ConferenceList', () => {
-  let component: ConferenceList;
-  let fixture: ComponentFixture<ConferenceList>;
+describe('ConfDetails', () => {
+  let component: ConfDetails;
+  let fixture: ComponentFixture<ConfDetails>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ConferenceList],
+      imports: [ConfDetails],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ConferenceList);
+    fixture = TestBed.createComponent(ConfDetails);
     component = fixture.componentInstance;
+    fixture.componentRef.setInput('msgPere', 'Bnjr');
     await fixture.whenStable();
   });
 
@@ -20,3 +21,5 @@ describe('ConferenceList', () => {
     expect(component).toBeTruthy();
   });
 });
+
+

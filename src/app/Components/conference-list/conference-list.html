@@ -1,0 +1,59 @@
+<section class="conference-section">
+  <div class="conference-heading">
+    <span class="conference-icon" aria-hidden="true">🗓️</span>
+
+    <div>
+      <h2>Liste des conférences à venir</h2>
+      <p>Aujourd’hui : {{ today | date: 'dd/MM/yyyy' }}</p>
+      <p>Cliquez sur une conférence pour afficher ses détails.</p>
+    </div>
+  </div>
+
+  <input
+    class="search"
+    type="search"
+    aria-label="Rechercher une conférence par titre"
+    placeholder="Taper le titre de la conférence"
+    [(ngModel)]="searchTitle"
+  />
+
+  <div class="conference-grid">
+    @for (conference of filteredConferences; track conference.id) {
+      <article class="conference-card">
+        @let remaining = remainingPlaces(conference);
+        <details>
+          <summary>{{ conference.title | uppercase }}</summary>
+          <p>{{ conference.description }}</p>
+          <p>Participants : {{ conference.nbParticipants }} / {{ conference.maxParticipants }}</p>
+        </details>
+        <p><strong>Date :</strong> {{ conference.date | date: 'dd/MM/yyyy' }}</p>
+        <p><strong>Lieu :</strong> {{ conference.place }}</p>
+        <p><strong>Places restantes :</strong> {{ remaining }}</p>
+        <button
+          type="button"
+          class="register-button"
+          [ngClass]="{
+            'few-places': remaining > 0 && remaining < 10,
+            'full': remaining === 0
+          }"
+          [disabled]="remaining === 0"
+          (click)="register(conference)"
+        >
+          S’inscrire
+        </button>
+      </article>
+    } @empty {
+      @if (conferences.length === 0) {
+        <p>Aucune conférence n’est enregistrée.</p>
+      } @else {
+        <p>Aucune conférence à venir ne correspond à votre recherche.</p>
+      }
+    }
+  </div>
+  <app-conf-details
+    [msgPere]="msg"
+    (msgFils)="showData($event)"
+  ></app-conf-details>
+</section>
+
+

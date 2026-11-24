@@ -1,12 +1,12 @@
-import { ConferenceList } from './conference-list/conference-list';
-import { Footer } from './footer/footer';
-import { Notifications } from './notifications/notifications';
+import { ConferenceList } from './Components/conference-list/conference-list';
+import { Footer } from './Components/footer/footer';
+import { Notifications } from './Components/notifications/notifications';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Header } from './header/header';
-import { Navigation } from './navigation/navigation';
-import { Profile } from './profile/profile';
-import { Friends } from './friends/friends';
+import { Header } from './Components/header/header';
+import { Navigation } from './Components/navigation/navigation';
+import { Profile } from './Components/profile/profile';
+import { Friends } from './Components/friends/friends';
 
 @Component({
   selector: 'app-root',
